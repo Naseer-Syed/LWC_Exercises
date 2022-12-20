@@ -1,12 +1,15 @@
 import { LightningElement, api } from "lwc";
 
 export default class StudentTile extends LightningElement {
-	get tileSelected() {
-		return this.isSelected ? "tile selected" : "tile";
-	}
 	@api student = {
-		Name: "Naseer Syed",
+		Name: "John Doe",
 		PhotoUrl: "/services/images/photo/003B0FakePictId"
 	};
 	@api isSelected = false;
+	get tileSelected() {
+		return this.isSelected ? "tile selected" : "tile";
+	}
+	studentClick() {
+		alert(this.student.Name);
+	}
 }
