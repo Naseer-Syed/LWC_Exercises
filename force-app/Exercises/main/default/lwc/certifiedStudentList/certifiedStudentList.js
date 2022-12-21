@@ -4,6 +4,7 @@ export default class CertifiedStudentList extends LightningElement {
 	@api certificationId = 0;
 	@api certificationName = "";
 	certifiedStudents;
+	btnGroupDisabled = true;
 	error;
 
 	@wire(getCertifiedStudents, { certificationId: "$certificationId" })
@@ -19,27 +20,34 @@ export default class CertifiedStudentList extends LightningElement {
 				phone: certHeld.Certified_Professional__r.Phone
 			}));
 		} else if (result.error) {
-            this.error = result.error;
+			this.error = result.error;
 		}
 	}
-    columnConfig = [
-        {
-        label: 'Name',
-        fieldName: 'name',
-        type: 'text'
-        },{
-        label: 'Date',
-        fieldName: 'date',
-        type: 'text'
-        },{
-        label: 'Email',
-        fieldName: 'email',
-        type: 'email'
-        },{
-        label: 'Phone',
-        fieldName: 'phone',
-        type: 'phone'
-        }
-    ];
-      
+	columnConfig = [
+		{
+			label: "Name",
+			fieldName: "name",
+			type: "text"
+		},
+		{
+			label: "Date",
+			fieldName: "date",
+			type: "text"
+		},
+		{
+			label: "Email",
+			fieldName: "email",
+			type: "email"
+		},
+		{
+			label: "Phone",
+			fieldName: "phone",
+			type: "phone"
+		}
+	];
+
+	onRowSelection(event) {
+		const numSelected = event.detail.selectedRows.length;
+		this.btnGroupDisabled = numSelected === 0;
+	}
 }
