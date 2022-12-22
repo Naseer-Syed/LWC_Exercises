@@ -4,6 +4,7 @@ public with sharing class CertPopularity {
 		return [
 			SELECT Id, Name, Number_of_Certified_Professionals__c
 			FROM Certification__c
+			WITH SECURITY_ENFORCED
 			ORDER BY Number_of_Certified_Professionals__c
 		];
 	}
