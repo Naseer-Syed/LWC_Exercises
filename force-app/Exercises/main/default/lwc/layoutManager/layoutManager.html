@@ -2,12 +2,17 @@
 	<span onshowmodal={handleShowModal}>
 		<c-modal header={modalHeader}>
 			{modalContent}
-			<div slot="footer">
-				<lightning-button label="Close" variant="brand" onclick={closeModal}></lightning-button>
-			</div>
+		<div slot="footer">
+			<lightning-button
+				label="Close"
+				variant="brand"
+				onclick={closeModal}
+			></lightning-button>
+		</div>
 		</c-modal>
 
 		<lightning-layout horizontal-align="space" multiple-rows>
+
 			<lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="3" large-device-size="2">
 				<c-aw-navigation onnavitemselected={handleNavItemSelected}></c-aw-navigation>
 			</lightning-layout-item>
@@ -25,6 +30,8 @@
 				<lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="9" large-device-size="10">
 					<c-trip-report-form></c-trip-report-form>
 					<lightning-card title="Trip Reports will go here"></lightning-card>
+					<c-trip-report-form-advanced>
+					</c-trip-report-form-advanced>
 				</lightning-layout-item>
 			</template>
 
